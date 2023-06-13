@@ -1,11 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import { Navigation } from './src/navigattion/Navigation';
 
 const App = () => {
   return (
-    <View>
-      <Text> AppScreenn </Text>
-    </View>
+    <NavigationContainer>
+      <Navigation/>
+    </NavigationContainer>
   );
 };
 
