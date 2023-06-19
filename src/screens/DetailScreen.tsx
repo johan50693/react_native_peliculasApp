@@ -4,6 +4,7 @@ import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import { Movie } from '../interfaces/movieInterface';
 import { RootStackParams } from '../navigattion/Navigation';
 import { ScrollView } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props extends StackScreenProps<RootStackParams,'DetailScreen'>{};
 
@@ -18,15 +19,21 @@ export const DetailScreen = ( {route} : Props) => {
 
     <ScrollView>
       <View style={styles.imageContainer} >
-        <Image 
-          source={{uri}}
-          style={styles.posterImage}
-        />
+          <View style={styles.imageBorder} >
+            <Image 
+              source={{uri}}
+              style={styles.posterImage}
+            />
+          </View>
       </View>
 
       <View style={styles.marginContainer} >
         <Text style={styles.subTitle} >{movie.original_title}</Text>
         <Text style={styles.title} >{movie.title}</Text>
+      </View>
+
+      <View style={styles.marginContainer} >
+        <Icon name="star-outline" size={30} color="#900" />
       </View>
 
     </ScrollView>
@@ -35,13 +42,19 @@ export const DetailScreen = ( {route} : Props) => {
 
 
 const styles = StyleSheet.create({
+  imageBorder: {
+    flex: 1,
+    borderBottomEndRadius: 25,
+    borderBottomStartRadius: 25,
+    overflow: 'hidden',
+  },
   posterImage: {
     flex:1,
     backgroundColor: 'red'
   },
   imageContainer: {
     width: '100%',
-    overflow: 'hidden',
+    // overflow: 'hidden',
     height: screenHeight*0.7,
     shadowColor: "#000",
       shadowOffset: {
