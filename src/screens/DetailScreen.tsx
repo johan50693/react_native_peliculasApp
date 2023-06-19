@@ -5,6 +5,7 @@ import { Movie } from '../interfaces/movieInterface';
 import { RootStackParams } from '../navigattion/Navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useMovieDetail } from '../hooks/useMovieDetail';
 
 interface Props extends StackScreenProps<RootStackParams,'DetailScreen'>{};
 
@@ -14,6 +15,7 @@ export const DetailScreen = ( {route} : Props) => {
 
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const {state} = useMovieDetail(movie.id);
 
   return (
 
