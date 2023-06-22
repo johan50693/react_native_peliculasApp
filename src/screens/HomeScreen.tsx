@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, ActivityIndicator, Dimensions, FlatList, ScrollView } from 'react-native';
 import { useMovies } from '../hooks/useMovies';
 import { MoviePoster } from '../components/MoviePoster';
@@ -24,6 +24,13 @@ export const HomeScreen = () => {
 
     setMainColors({primary,secondary});
   }
+
+  useEffect(() => {
+    if(nowPlaying.length > 0){
+      getPosterColors(0);
+    }
+  }, [nowPlaying])
+  
 
   if (isLoading) {
     return (
